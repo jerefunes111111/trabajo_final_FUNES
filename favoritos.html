@@ -13,42 +13,6 @@
     <a href="biblioteca.html" class="volver">← Volver a la Biblioteca</a>
   </div>
 
-  <script>
-    let favoritos = JSON.parse(localStorage.getItem('favoritos_libros')) || [];
-    const contenedorFav = document.getElementById('listaFavoritos');
-
-    if (favoritos.length === 0) {
-      contenedorFav.innerHTML = '<p>No tenés libros en tus favoritos todavía.</p>';
-    } else {
-      favoritos.forEach((libro, index) => {
-        const div = document.createElement('div');
-        div.classList.add('libro-item');
-        const estrellas = '⭐'.repeat(libro.calificacion || 5);
-
-        div.innerHTML = `
-          <strong>${libro.titulo}</strong><br>
-          Autor: ${libro.autor}<br>
-          Género: ${libro.genero}<br>
-          Temática: ${libro.tematica}<br>
-          <div class="estrellas">${estrellas}</div>
-          <button class="btn btn-eliminar" onclick="eliminarFavorito(${index})">🗑️ Eliminar de favoritos</button>
-        `;
-
-        contenedorFav.appendChild(div);
-      });
-    }
-
-    function eliminarFavorito(index) {
-      if (confirm('¿Seguro que querés eliminar este libro de tus favoritos?')) {
-        favoritos.splice(index, 1);
-        localStorage.setItem('favoritos_libros', JSON.stringify(favoritos));
-        location.reload();
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
