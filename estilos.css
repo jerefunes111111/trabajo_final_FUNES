@@ -87,4 +87,162 @@ input {
   margin-top: 10px;
 }
 
+/* Styles for Lectura Page */
+.lectura-body {
+  background: #f5f5f5;
+  align-items: flex-start;
+  padding-top: 40px;
+  min-height: 100vh;
+}
 
+.lectura-body .contenedor {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 420px;
+  text-align: left;
+}
+
+.lectura-body h2 {
+  text-align: center;
+  color: #3a6cf4;
+  margin-bottom: 15px;
+}
+
+.lectura-body p {
+  color: #333;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.lectura-body button {
+  background-color: #3a6cf4;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 20px;
+  font-weight: normal;
+}
+
+.lectura-body button:hover {
+  background-color: #1f4ed6;
+}
+
+/* Styles for Biblioteca Page */
+.biblioteca-body {
+  background-color: #f5f7ff;
+}
+
+.biblioteca-body .contenedor {
+  margin-top: 80px;
+}
+
+.biblioteca-body h1 {
+  color: #4a6cf7;
+  margin-bottom: 30px;
+}
+
+.biblioteca-body .menu button {
+  background-color: #4a6cf7;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  margin: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.biblioteca-body .menu button:hover {
+  background-color: #6a84f9;
+}
+
+.busqueda-botones {
+    margin-top: 12px;
+}
+
+/* Styles for Conocenos Page */
+.conocenos-body {
+  background-color: #f2f2ff;
+}
+
+.conocenos-body .contenedor {
+  margin-top: 60px;
+}
+
+.conocenos-body h1 {
+  color: #4a6cf7;
+  margin-bottom: 30px;
+}
+
+.conocenos-body .boton {
+  display: block;
+  margin: 15px auto;
+  background: #4a6cf7;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 250px;
+  transition: background 0.3s ease;
+}
+
+.conocenos-body .boton:hover {
+  background: #6a84f9;
+}
+
+.conocenos-body .info {
+  max-width: 600px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: justify;
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.conocenos-body .btn-volver {
+  background: #ccc;
+  color: black;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.conocenos-body .btn-volver:hover {
+  background: #bbb;
+}
+
+.libro-item {
+  margin-bottom: 12px;
+  padding: 10px;
+  background: #eef2ff;
+  border-radius: 10px;
+}
+
+#msj-login {
+  color: #a60000;
+  margin-top: 8px;
+  display: none;
+}
+
+.botones-libro {
+  margin-top: 16px;
+}
