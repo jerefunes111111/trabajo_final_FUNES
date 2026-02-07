@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuración del sitio - BDE</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="contenedor">
+    <h2>Configuración del sitio</h2>
+
+    <form id="config-form">
+      <label for="idioma">Idioma:</label>
+      <select id="idioma">
+        <option value="es">Español</option>
+        <option value="en">Inglés</option>
+        <option value="fr">Francés</option>
+      </select>
+
+      <label for="tema">Tema:</label>
+      <select id="tema">
+        <option value="claro">Claro</option>
+        <option value="oscuro">Oscuro</option>
+      </select>
+
+      <label for="fuente">Tamaño de fuente:</label>
+      <select id="fuente">
+        <option value="12">12 px</option>
+        <option value="14" selected>14 px</option>
+        <option value="16">16 px</option>
+      </select>
+
+      <label for="notificaciones">¿Recibir notificaciones?</label>
+      <select id="notificaciones">
+        <option value="si">Sí</option>
+        <option value="no">No</option>
+      </select>
+
+      <button type="submit" class="btn">Guardar configuración</button>
+    </form>
+
+    <a href="perfil.html" class="volver">← Volver al Perfil</a>
+  </div>
+
+  <script>
+    // Cargar configuraciones guardadas (si existen)
+    const configGuardada = JSON.parse(localStorage.getItem('bde_config')) || {};
+    document.getElementById('idioma').value = configGuardada.idioma || 'es';
+    document.getElementById('tema').value = configGuardada.tema || 'claro';
+    document.getElementById('fuente').value = configGuardada.fuente || '14';
+    document.getElementById('notificaciones').value = configGuardada.notificaciones || 'si';
+
+    // Guardar configuraciones
+    document.getElementById('config-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nuevaConfig = {
+        idioma: document.getElementById('idioma').value,
+        tema: document.getElementById('tema').value,
+        fuente: document.getElementById('fuente').value,
+        notificaciones: document.getElementById('notificaciones').value
+      };
+
+      localStorage.setItem('bde_config', JSON.stringify(nuevaConfig));
+      alert('Configuración guardada correctamente.');
+      window.location.href = 'perfil.html';
+    });
+  </script>
+</body>
+</html>

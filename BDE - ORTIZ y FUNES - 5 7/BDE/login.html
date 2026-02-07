@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar sesión - BDE</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="contenedor">
+    <h2>Iniciar sesión</h2>
+
+    <form id="form-login" novalidate>
+      <input id="login-email" type="email" placeholder="Gmail" required>
+      <input id="login-password" type="password" placeholder="Contraseña" required>
+      <button type="submit" class="btn">Iniciar sesión</button>
+    </form>
+
+   
+    <p id="msj-login" style="color:#a60000; margin-top:8px; display:none;"></p>
+
+    <a href="recuperar.html" class="recuperar">¿Olvidaste tu contraseña? Recuperar</a>
+    <a href="index.html" class="volver">← Volver</a>
+  </div>
+
+  <script>
+    
+    const form = document.getElementById('form-login');
+    const msj = document.getElementById('msj-login');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      msj.style.display = 'none';
+      msj.textContent = '';
+
+      const email = document.getElementById('login-email').value.trim().toLowerCase();
+      const password = document.getElementById('login-password').value;
+
+      const usuarioJSON = localStorage.getItem('bde_usuario');
+      if (!usuarioJSON) {
+        msj.textContent = 'No existe ningún usuario registrado. Registrate primero.';
+        msj.style.display = 'block';
+        return;
+      }
+
+      const usuario = JSON.parse(usuarioJSON);
+
+      if (email === usuario.email && password === usuario.password) {
+       
+        alert('Inicio de sesión correcto');
+        window.location.href = 'biblioteca.html';
+;
+      } else {
+        msj.textContent = 'Email o contraseña incorrectos. Verificá e intentá de nuevo.';
+        msj.style.display = 'block';
+      }
+    });
+
+  </script>
+</body>
+</html>
+
+

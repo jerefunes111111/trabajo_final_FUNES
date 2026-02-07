@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado de Búsqueda - Geografía</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .contenedor {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 400px;
+    }
+    button {
+      background-color: #3a6cf4;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #1f4ed6;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h2>Resultado de Búsqueda</h2>
+    <p><strong>Título:</strong> Geografía de la Argentina</p>
+    <p><strong>Autor:</strong> Ricardo Villarba</p>
+    <p><strong>Género:</strong> Expositivo</p>
+
+    <button id="leer">📖 Leer ahora</button>
+    <button id="favorito">⭐ Agregar a Favoritos</button>
+    <button onclick="window.location.href='busqueda.html'">⬅ Volver</button>
+  </div>
+
+  <script>
+    
+    document.getElementById('leer').addEventListener('click', () => {
+      const libro = {
+        titulo: 'Geografía de la Argentina',
+        autor: 'Ricardo Villarba',
+        genero: 'Expositivo'
+      };
+
+      let historial = JSON.parse(localStorage.getItem('historial')) || [];
+      historial.push(libro);
+      localStorage.setItem('historial', JSON.stringify(historial));
+
+      localStorage.setItem('libroActual', JSON.stringify(libro));
+      window.location.href = 'leer_geo.html';
+    });
+
+    
+    document.getElementById('favorito').addEventListener('click', () => {
+      const libro = {
+        titulo: 'Geografía de la Argentina',
+        autor: 'Ricardo Villarba',
+        genero: 'Expositivo'
+      };
+
+      let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+      const existe = favoritos.some(f => f.titulo === libro.titulo);
+
+      if (!existe) {
+        favoritos.push(libro);
+        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+        alert('Libro agregado a favoritos ⭐');
+      } else {
+        alert('Este libro ya está en favoritos.');
+      }
+    });
+  </script>
+</body>
+</html>

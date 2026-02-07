@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Los tres chanchitos - Biblioteca Virtual</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="contenedor">
+    <h2 id="tituloLibro">📘 Los tres chanchitos</h2>
+
+    <h3>Temática literaria:</h3>
+    <p id="tematica">Cuento Infantil</p>
+
+    <h3>Título:</h3>
+    <p id="tituloText">Los tres chanchitos</p>
+
+    <h3>Autor:</h3>
+    <p id="autorText">Desconocido</p>
+
+    <h3>Género:</h3>
+    <p id="generoText">Narrativo</p>
+
+    <div class="botones" style="margin-top:16px;">
+      <button id="leer" class="btn">📖 Leer ahora</button>
+      <button id="fav" class="btn">⭐ Agregar a favoritos</button>
+      <button id="volver" class="btn">⬅ Volver al catálogo</button>
+    </div>
+  </div>
+
+  <script>
+    
+    const libroGuardado = localStorage.getItem('resultado_libro');
+    const libro = libroGuardado ? JSON.parse(libroGuardado) : {
+      titulo: 'Los tres chanchitos',
+      autor: 'Desconocido',
+      genero: 'Narrativo',
+      tematica: 'Cuento Infantil'
+    };
+
+    
+    document.getElementById('tituloLibro').textContent = '📘 ' + libro.titulo;
+    document.getElementById('tituloText').textContent = libro.titulo;
+    document.getElementById('autorText').textContent = libro.autor;
+    document.getElementById('generoText').textContent = libro.genero;
+    document.getElementById('tematica').textContent = libro.tematica;
+
+    
+    document.getElementById('leer').addEventListener('click', () => {
+      let historial = JSON.parse(localStorage.getItem('historial_lectura')) || [];
+      if (!historial.some(l => l.titulo === libro.titulo)) {
+        historial.push(libro);
+        localStorage.setItem('historial_lectura', JSON.stringify(historial));
+      }
+
+      
+      localStorage.setItem('libroActual', JSON.stringify(libro));
+      alert(`Libro "${libro.titulo}" agregado al historial de lectura ✅`);
+      window.location.href = 'leer-chanchitos.html';
+    });
+
+    
+    document.getElementById('fav').addEventListener('click', () => {
+      let favoritos = JSON.parse(localStorage.getItem('favoritos_libros')) || [];
+      if (!favoritos.some(l => l.titulo === libro.titulo)) {
+        favoritos.push(libro);
+        localStorage.setItem('favoritos_libros', JSON.stringify(favoritos));
+        alert(`Libro "${libro.titulo}" agregado a tus favoritos ⭐`);
+      } else {
+        alert('Este libro ya está en tus favoritos.');
+      }
+    });
+
+    
+    document.getElementById('volver').addEventListener('click', () => {
+      window.location.href = 'catalogo.html';
+    });
+  </script>
+</body>
+</html>
+
+

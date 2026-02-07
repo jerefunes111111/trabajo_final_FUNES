@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #cbe4ea, #e8f3f7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.contenedor {
+  text-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 300px;
+}
+
+.frase {
+  color: #005a5a;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.logo {
+  font-size: 60px;
+  color: #005a5a;
+  margin: 0;
+}
+
+.subtitulo {
+  color: #007979;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.botones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  display: block;
+  background-color: #a6d6d6;
+  color: #004a4a;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #86c1c1;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+
+.volver, .recuperar {
+  display: block;
+  color: #006666;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.volver:hover, .recuperar:hover {
+  text-decoration: underline;
+}
+
+.nota {
+  font-size: 14px;
+  color: #006666;
+  margin-top: 10px;
+}
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuperar contraseña - BDE</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="contenedor">
+    <h2>Recuperar contraseña</h2>
+
+    <p>Ingrese su correo electrónico</p>
+    <form id="form-recuperar">
+      <input id="email" type="email" placeholder="Correo electrónico" required>
+
+      <p>Crear contraseña nueva</p>
+      <input id="nueva-password" type="password" placeholder="Nueva contraseña" required>
+
+      <button type="submit" class="btn">Enviar enlace</button>
+    </form>
+
+    <p class="nota">Te enviaremos un correo para restablecer tu contraseña.</p>
+
+    <a href="login.html" class="volver">← Volver al inicio de sesión</a>
+  </div>
+
+  <script>
+    
+    document.getElementById('form-recuperar').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim().toLowerCase();
+      const nuevaPassword = document.getElementById('nueva-password').value;
+
+      
+      const usuarioJSON = localStorage.getItem('bde_usuario');
+      if (usuarioJSON) {
+        const usuario = JSON.parse(usuarioJSON);
+
+        
+        if (usuario.email === email) {
+          usuario.password = nuevaPassword;
+          localStorage.setItem('bde_usuario', JSON.stringify(usuario));
+        } else {
+          
+          const nuevoUsuario = { nombre: '', apellido: '', email, password: nuevaPassword };
+          localStorage.setItem('bde_usuario', JSON.stringify(nuevoUsuario));
+        }
+      } else {
+        
+        const nuevoUsuario = { nombre: '', apellido: '', email, password: nuevaPassword };
+        localStorage.setItem('bde_usuario', JSON.stringify(nuevoUsuario));
+      }
+
+      alert('Contraseña actualizada correctamente. Ahora podés iniciar sesión.');
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>
+
+

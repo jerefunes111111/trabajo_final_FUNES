@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro - BDE</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="contenedor">
+    <h2>Ingrese sus datos</h2>
+
+    <form id="form-registro">
+      <input id="nombre" type="text" placeholder="Nombre" required>
+      <input id="apellido" type="text" placeholder="Apellido" required>
+      <input id="email" type="email" placeholder="Gmail" required>
+      <input id="password" type="password" placeholder="Contraseña" required>
+      <button type="submit" class="btn">Registrarme</button>
+    </form>
+
+    <a href="index.html" class="volver">← Volver</a>
+  </div>
+
+  <script>
+    
+    document.getElementById('form-registro').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value.trim();
+      const apellido = document.getElementById('apellido').value.trim();
+      const email = document.getElementById('email').value.trim().toLowerCase();
+      const password = document.getElementById('password').value;
+
+      
+      const usuario = { nombre, apellido, email, password };
+      localStorage.setItem('bde_usuario', JSON.stringify(usuario));
+
+      
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil - BDE</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="contenedor">
+    <h2>Detalles del usuario</h2>
+
+    <form id="perfil-form">
+      <label>Nombre:</label>
+      <input id="nombre" type="text" readonly>
+
+      <label>Apellido:</label>
+      <input id="apellido" type="text" readonly>
+
+      <label>Gmail:</label>
+      <input id="email" type="email" readonly>
+
+      <label>Contraseña:</label>
+      <input id="password" type="password" readonly>
+      
+      <div class="botones">
+        <button type="button" id="editar" class="btn">Editar perfil</button>
+        <button type="button" id="configuracion" class="btn">Configuración</button>
+      </div>
+    </form>
+
+    <a href="biblioteca.html" class="volver">← Volver a la Biblioteca</a>
+  </div>
+
+  <script>
+    const usuarioJSON = localStorage.getItem('bde_usuario');
+    const nombreInput = document.getElementById('nombre');
+    const apellidoInput = document.getElementById('apellido');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const btnEditar = document.getElementById('editar');
+
+    if (usuarioJSON) {
+      const usuario = JSON.parse(usuarioJSON);
+      nombreInput.value = usuario.nombre || '';
+      apellidoInput.value = usuario.apellido || '';
+      emailInput.value = usuario.email || '';
+      passwordInput.value = usuario.password || '';
+    }
+
+   
+    let modoEdicion = false;
+    btnEditar.addEventListener('click', () => {
+      modoEdicion = !modoEdicion;
+      nombreInput.readOnly = !modoEdicion;
+      apellidoInput.readOnly = !modoEdicion;
+      emailInput.readOnly = !modoEdicion;
+      passwordInput.readOnly = !modoEdicion;
+
+      if (modoEdicion) {
+        btnEditar.textContent = 'Guardar cambios';
+        alert('Podés editar tus datos ahora.');
+      } else {
+        btnEditar.textContent = 'Editar perfil';
+        const usuarioActualizado = {
+          nombre: nombreInput.value,
+          apellido: apellidoInput.value,
+          email: emailInput.value,
+          password: passwordInput.value
+        };
+        localStorage.setItem('bde_usuario', JSON.stringify(usuarioActualizado));
+        alert('Cambios guardados correctamente.');
+      }
+    });
+
+  
+document.getElementById('configuracion').addEventListener('click', () => {
+  window.location.href = 'configuracion.html';
+});
+
+
+  </script>
+</body>
+</html>

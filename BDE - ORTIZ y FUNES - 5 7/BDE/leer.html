@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lector de Libros</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f5f5f5;
+      padding: 30px;
+      line-height: 1.6;
+      color: #333;
+    }
+    .cabecera {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    button {
+      background-color: #3a6cf4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .contenido {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="cabecera">
+    <button onclick="window.location.href='resultado.html'">⬅ Volver</button>
+    <h2 id="tituloLibro"></h2>
+  </div>
+
+  <div class="contenido" id="textoLibro">
+    
+  </div>
+
+  <script>
+    const libroActual = JSON.parse(localStorage.getItem('libroActual'));
+    const titulo = document.getElementById('tituloLibro');
+    const texto = document.getElementById('textoLibro');
+
+    if (libroActual) {
+      titulo.textContent = libroActual.titulo;
+      texto.innerHTML = `
+        <p>Capítulo 1</p>
+        <p>La historia comienza en una misteriosa academia donde los secretos están escondidos en los pasillos silenciosos...</p>
+        <p>A medida que la noche cae sobre la ciudad, el protagonista descubre que nada es lo que parece...</p>
+        <p><em>Fin del fragmento de muestra.</em></p>
+      `;
+    } else {
+      titulo.textContent = 'Libro no encontrado';
+      texto.innerHTML = '<p>No se ha cargado ningún libro.</p>';
+    }
+  </script>
+</body>
+</html>
+

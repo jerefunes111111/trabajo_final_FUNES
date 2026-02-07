@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Búsqueda Avanzada - Biblioteca Virtual</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="contenedor">
+    <h2>Búsqueda Avanzada</h2>
+
+    <label for="titulo">Título del libro</label>
+    <input type="text" id="titulo" placeholder="Ej: Los tres chanchitos">
+
+    <label for="autor">Autor</label>
+    <input type="text" id="autor" placeholder="Ej: Desconocido">
+
+    <label for="genero">Género</label>
+    <input type="text" id="genero" placeholder="Ej: Narrativo">
+
+    <label for="anio">Año de publicación</label>
+    <input type="text" id="anio" placeholder="Opcional">
+
+    <div class="botones" style="margin-top:12px;">
+      <button id="buscar" class="btn">Buscar</button>
+      <button id="volver" class="btn">Volver</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('buscar').addEventListener('click', () => {
+      const titulo = document.getElementById('titulo').value.trim().toLowerCase();
+      const autor = document.getElementById('autor').value.trim().toLowerCase();
+      const genero = document.getElementById('genero').value.trim().toLowerCase();
+      const anio = document.getElementById('anio').value.trim();
+
+      if (titulo === 'los tres chanchitos' && autor === 'desconocido' && genero === 'narrativo') {
+        const libro = {
+          titulo: 'Los tres chanchitos',
+          autor: 'Desconocido',
+          genero: 'Narrativo',
+          anio: anio || ''
+        };
+        localStorage.setItem('resultado_libro', JSON.stringify(libro));
+        window.location.href = 'los-tres-chanchitos.html';
+        return;
+      }
+
+      
+      alert('No se encontraron libros que coincidan con los datos ingresados.');
+    });
+
+    document.getElementById('volver').addEventListener('click', () => {
+      window.location.href = 'catalogo.html';
+    });
+  </script>
+</body>
+</html>
