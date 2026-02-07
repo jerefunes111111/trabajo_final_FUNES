@@ -4,74 +4,15 @@
   <meta charset="UTF-8">
   <title>Conoce más sobre nosotros - Biblioteca Virtual</title>
   <link rel="stylesheet" href="estilos.css">
-  <style>
-    body {
-      background-color: #f2f2ff;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
-    .contenedor {
-      margin-top: 60px;
-    }
-    h1 {
-      color: #4a6cf7;
-      margin-bottom: 30px;
-    }
-    .boton {
-      display: block;
-      margin: 15px auto;
-      background: #4a6cf7;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      width: 250px;
-      transition: background 0.3s ease;
-    }
-    .boton:hover {
-      background: #6a84f9;
-    }
-    .info {
-      max-width: 600px;
-      margin: 30px auto;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      text-align: justify;
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .btn-volver {
-      background: #ccc;
-      color: black;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-    .btn-volver:hover {
-      background: #bbb;
-    }
-  </style>
 </head>
-<body>
+<body class="conocenos-body">
 
   <div class="contenedor">
     <h1>Conoce más sobre nosotros</h1>
 
-    <button class="boton" onclick="mostrarInfo('biblioteca')"> ¿Qué es la Biblioteca Digital?</button>
-    <button class="boton" onclick="mostrarInfo('quienes')"> ¿Quiénes somos?</button>
-    <button class="boton" onclick="mostrarInfo('proposito')"> ¿Cuál es el propósito?</button>
+    <button class="boton" id="btn-biblioteca">¿Qué es la Biblioteca Digital?</button>
+    <button class="boton" id="btn-quienes">¿Quiénes somos?</button>
+    <button class="boton" id="btn-proposito">¿Cuál es el propósito?</button>
 
     <div id="infoBiblioteca" class="info">
       <h3>¿Qué es la Biblioteca Digital?</h3>
@@ -102,19 +43,7 @@
 
     <button class="btn-volver" onclick="window.location.href='biblioteca.html'">⬅ Volver al inicio</button>
   </div>
-
-  <script>
-    function mostrarInfo(tipo) {
-      document.querySelectorAll('.info').forEach(div => div.style.display = 'none');
-      if (tipo === 'biblioteca') {
-        document.getElementById('infoBiblioteca').style.display = 'block';
-      } else if (tipo === 'quienes') {
-        document.getElementById('infoQuienes').style.display = 'block';
-      } else if (tipo === 'proposito') {
-        document.getElementById('infoProposito').style.display = 'block';
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
